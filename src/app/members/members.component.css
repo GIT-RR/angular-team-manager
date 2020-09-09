@@ -1,0 +1,9 @@
+/* membersComponent's private CSS styles */
+.member-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.member-column {
+  width: 50%;
+}

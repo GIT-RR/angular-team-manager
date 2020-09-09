@@ -1,0 +1,18 @@
+<h3>Team Members</h3>
+<div>
+  <button (click)="(addMember)">Add a new team member</button>
+</div>
+<div class="member-container">
+  <div class="member-column">
+    <app-member-list
+      [members]="members"
+      (memberSelected)="selectMember($event)"
+    ></app-member-list>
+  </div>
+  <div class="member-column">
+    <app-member-displayer
+      *ngIf="selectedMember"
+      [member]="selectedMember"
+    ></app-member-displayer>
+  </div>
+</div>
