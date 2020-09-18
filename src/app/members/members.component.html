@@ -1,6 +1,6 @@
 <h3>Team Members</h3>
 <div>
-  <button (click)="(addMember)">Add a new team member</button>
+  <button (click)="addMember()">Add a new team member</button>
 </div>
 <div class="member-container">
   <div class="member-column">
@@ -12,7 +12,7 @@
   <div class="member-column">
     <app-member-displayer
       *ngIf="selectedMember"
-      [member]="selectedMember"
+      [id]="selectedMember.id"
     ></app-member-displayer>
   </div>
 </div>

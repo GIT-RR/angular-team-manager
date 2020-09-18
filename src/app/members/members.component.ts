@@ -18,12 +18,12 @@ export class MembersComponent implements OnInit {
   }
 
   getMembers(): void {
-    this.memberService
-      .getMembers()
-      .subscribe((members) => (this.members = members));
+    this.members = this.memberService.getMembers();
   }
 
-  addMember(): void {}
+  addMember(): void {
+    alert('add member');
+  }
 
   selectMember(member: Member) {
     if (this.selectedMember === member) {

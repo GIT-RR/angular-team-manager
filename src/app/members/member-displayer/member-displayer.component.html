@@ -6,22 +6,22 @@
       <td>
         <label>Email:</label>
       </td>
-      <!-- <td>{{ member.email }}</td> -->
+      <td>{{ member.email }}</td>
     </tr>
     <tr>
       <td>
         <label>Role:</label>
       </td>
-      <!-- <td>{{ member.roleDesc }}</td> -->
+      <td>{{ member.roleDesc }}</td>
     </tr>
     <tr>
       <td>
         <label>Gender:</label>
       </td>
-      <!-- <td>{{ member.genderDesc }}</td> -->
+      <td>{{ member.genderDesc }}</td>
     </tr>
   </table>
 
-  <button (click)="(editMember)">Edit member</button>
-  <button (click)="(deleteMember)">Delete member</button>
+  <button (click)="editMember()">Edit member</button>
+  <button (click)="deleteMember()">Delete member</button>
 </div>
