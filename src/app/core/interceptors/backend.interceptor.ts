@@ -14,10 +14,7 @@ import { Member } from '../models/member';
 export class BackendInterceptor implements HttpInterceptor {
   constructor() {}
 
-  intercept(
-    request: HttpRequest<unknown>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<unknown>): Observable<HttpEvent<any>> {
     let body = null;
 
     if (request.method === 'GET') {
