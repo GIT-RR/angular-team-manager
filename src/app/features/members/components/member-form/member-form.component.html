@@ -1,0 +1,84 @@
+<form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" name="id" />
+  <table>
+    <tr>
+      <td>
+        <label>Email</label>
+      </td>
+      <td>
+        <input type="text" formControlName="email" />
+      </td>
+      <div
+        className="error"
+        *ngIf="email.errors && (email.dirty || email.touched)"
+      >
+        <app-error-message
+          *ngIf="email.errors && (email.dirty || email.touched)"
+        >
+          <span *ngIf="email.errors.required">Required</span>
+          <span *ngIf="email.errors.email">Invalid format</span>
+        </app-error-message>
+      </div>
+    </tr>
+    <tr>
+      <td>
+        <label>Name</label>
+      </td>
+      <td>
+        <input type="text" formControlName="name" />
+      </td>
+      <td>
+        <app-error-message *ngIf="name.errors && (name.dirty || name.touched)">
+          <span *ngIf="name.errors.required">Required</span>
+        </app-error-message>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Role</label>
+      </td>
+      <td>
+        <select formControlName="role">
+          <option value=""></option>
+          <option *ngFor="let role of roles" value="{{ role.value }}">
+            {{ role.name }}
+          </option>
+        </select>
+      </td>
+      <td>
+        <app-error-message *ngIf="role.errors && (role.dirty || role.touched)">
+          <span *ngIf="role.errors.required">Required</span>
+        </app-error-message>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Gender</label>
+      </td>
+      <td>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              formControlName="gender"
+              value="{{ gender.value }}"
+            />
+            {{ gender.name }}
+          </label>
+        </div>
+      </td>
+      <td>
+        <app-error-message
+          *ngIf="gender.errors && (gender.dirty || gender.touched)"
+        >
+          <span *ngIf="gender.errors.required">Required</span>
+        </app-error-message>
+      </td>
+    </tr>
+  </table>
+
+  <button type="submit">Ok</button>
+  <button type="button" (click)="cancel()">Cancel</button>
+</form>
+
+<!-- <p>Form Status: {{ memberForm.status }}</p> -->

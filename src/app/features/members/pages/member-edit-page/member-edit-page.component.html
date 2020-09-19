@@ -1,0 +1,6 @@
+<h2>Editing {{ member.name }}</h2>
+<app-member-form
+  [member]="member"
+  (onSuccess)="edit($event)"
+  (onCancel)="cancel()"
+></app-member-form>
