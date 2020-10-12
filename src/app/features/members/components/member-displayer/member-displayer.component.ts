@@ -8,7 +8,7 @@ import {
 import { MemberService } from '../../../../core/services/member.service';
 import { Router } from '@angular/router';
 import { Member } from 'src/app/core/models/member';
-import { members } from 'src/app/core/interceptors/fixtures/members';
+import { members } from 'src/app/core/fixtures/members';
 
 @Component({
   selector: 'app-member-displayer',

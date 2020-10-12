@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MessagesComponent } from './messages/messages.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MemberListComponent } from './features/members/components/member-list/member-list.component';
@@ -20,7 +19,6 @@ import { BackendInterceptor } from './core/interceptors/backend.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    MessagesComponent,
     MemberListComponent,
     MemberDisplayerComponent,
     MemberFormComponent,

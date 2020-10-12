@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { roles, genders } from '../../../../core/interceptors/fixtures/common';
+import { roles, genders } from '../../../../core/fixtures/common';
 import { validateAllFormFields } from '../../../../core/utils/form-functions';
 import { Router } from '@angular/router';
 import { Member } from 'src/app/core/models/member';

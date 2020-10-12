@@ -7,7 +7,7 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import * as membersBE from './fixtures/members';
+import * as membersBE from '../fixtures/members';
 import { Member } from '../models/member';
 
 @Injectable()

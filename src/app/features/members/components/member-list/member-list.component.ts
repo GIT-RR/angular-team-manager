@@ -9,8 +9,4 @@ import { Member } from 'src/app/core/models/member';
 export class MemberListComponent {
   @Input() members: Member[];
   @Output() memberSelected = new EventEmitter();
-
-  selectMember(member: Member) {
-    this.memberSelected.emit(member);
-  }
 }

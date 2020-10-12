@@ -1,5 +1,5 @@
 <ul class="members">
-  <li *ngFor="let member of members" (click)="selectMember(member)">
+  <li *ngFor="let member of members" (click)="memberSelected.emit(member)">
     <span class="badge">{{ member.id }}</span> {{ member.name }}
   </li>
 </ul>

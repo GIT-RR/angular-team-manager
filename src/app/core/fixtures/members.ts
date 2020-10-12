@@ -1,4 +1,4 @@
-import { Member } from 'src/app/core/models/member';
+import { Member } from '../models/member';
 import { roles, genders } from './common';
 
 export const members: Member[] = [
