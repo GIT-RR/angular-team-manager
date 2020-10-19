@@ -1,0 +1,19 @@
+.table-container table {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-container td,
+.table-container th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.table-container tr:nth-child(even) {
+  background-color: #dddddd;
+}

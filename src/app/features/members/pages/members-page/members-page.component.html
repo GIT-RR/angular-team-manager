@@ -6,7 +6,7 @@
   <div class="member-column">
     <app-member-list
       [members]="members"
-      (memberSelected)="selectMember($event)"
+      (onSelectMember)="handleSelectMember($event)"
     ></app-member-list>
   </div>
   <div class="member-column">

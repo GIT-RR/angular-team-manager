@@ -9,7 +9,7 @@ import { MemberService } from 'src/app/core/services/member.service';
   styleUrls: ['./member-edit-page.component.css'],
 })
 export class MemberEditPageComponent implements OnInit {
-  member: Member = new Member();
+  member: Member;
 
   constructor(
     private memberService: MemberService,
@@ -26,12 +26,12 @@ export class MemberEditPageComponent implements OnInit {
     this.member = await this.memberService.getMember(id);
   }
 
-  edit(memberData: Member) {
-    this.memberService.updateMember(memberData);
+  async handleEdit(memberData: Member) {
+    await this.memberService.updateMember(memberData);
     this.router.navigate(['members']);
   }
 
-  cancel() {
+  handleCancel() {
     this.router.navigate(['members']);
   }
 }

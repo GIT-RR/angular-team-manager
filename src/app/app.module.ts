@@ -15,6 +15,8 @@ import { ErrorMessageComponent } from './shared/components/error-message/error-m
 import { MemberAddPageComponent } from './features/members/pages/member-add-page/member-add-page.component';
 
 import { BackendInterceptor } from './core/interceptors/backend.interceptor';
+import { TableComponent } from './shared/components/table/table.component';
+import { TaskFormComponent } from './features/tasks/components/task-form/task-form.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { BackendInterceptor } from './core/interceptors/backend.interceptor';
     ErrorMessageComponent,
     MemberAddPageComponent,
     ErrorMessageComponent,
+    TableComponent,
+    TaskFormComponent,
   ],
   imports: [
     BrowserModule,

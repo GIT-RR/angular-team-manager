@@ -17,7 +17,7 @@ import { members } from 'src/app/core/fixtures/members';
 })
 export class MemberDisplayerComponent implements OnChanges {
   @Input() id: number;
-  member: Member = new Member();
+  member: Member;
 
   constructor(private memberService: MemberService, private router: Router) {}
 
@@ -29,11 +29,11 @@ export class MemberDisplayerComponent implements OnChanges {
     this.member = await this.memberService.getMember(this.id);
   }
 
-  editMember() {
+  handleEdit() {
     this.router.navigate(['members/edit', this.id]);
   }
 
-  async deleteMember() {
+  async handleDelete() {
     await this.memberService.removeMember(this.id);
   }
 }

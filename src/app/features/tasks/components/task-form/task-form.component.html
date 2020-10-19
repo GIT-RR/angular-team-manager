@@ -1,0 +1,65 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" name="id" />
+  <table>
+    <tr>
+      <td>
+        <label>Area</label>
+      </td>
+      <td>
+        <select formControlName="area">
+          <option value=""></option>
+          <option *ngFor="let role of roles" value="{{ role.value }}">
+            {{ role.name }}
+          </option>
+        </select>
+      </td>
+      <td>
+        <app-error-message *ngIf="area.errors && (area.dirty || area.touched)">
+          <span *ngIf="area.errors.required">Required</span>
+        </app-error-message>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Description</label>
+      </td>
+      <td>
+        <input type="text" formControlName="description" />
+      </td>
+      <td>
+        <app-error-message
+          *ngIf="
+            description.errors && (description.dirty || description.touched)
+          "
+        >
+          <span *ngIf="description.errors.required">Required</span>
+        </app-error-message>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Status</label>
+      </td>
+      <td>
+        <select formControlName="status">
+          <option value=""></option>
+          <option *ngFor="let status of statuses" value="{{ status.value }}">
+            {{ status.name }}
+          </option>
+        </select>
+      </td>
+      <td>
+        <app-error-message
+          *ngIf="status.errors && (status.dirty || status.touched)"
+        >
+          <span *ngIf="status.errors.required">Required</span>
+        </app-error-message>
+      </td>
+    </tr>
+  </table>
+
+  <button type="submit">Ok</button>
+  <button type="button" (click)="cancel()">Cancel</button>
+</form>
+
+<!-- <p>Form Status: {{ memberForm.status }}</p> -->

@@ -19,7 +19,7 @@ import { Member } from 'src/app/core/models/member';
   templateUrl: './member-form.component.html',
   styleUrls: ['./member-form.component.css'],
 })
-export class MemberFormComponent implements OnChanges {
+export class MemberFormComponent implements OnInit {
   @Input() member: Member;
   @Output() onSuccess = new EventEmitter();
   @Output() onCancel = new EventEmitter();
@@ -52,7 +52,7 @@ export class MemberFormComponent implements OnChanges {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnChanges(): void {
+  ngOnInit(): void {
     if (this.member) {
       this.memberForm.controls['id'].setValue(this.member.id);
       this.memberForm.controls['email'].setValue(this.member.email);

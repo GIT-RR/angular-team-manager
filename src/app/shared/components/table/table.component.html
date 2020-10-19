@@ -1,0 +1,19 @@
+<div class="table-container">
+  <table>
+    <tr>
+      <th *ngFor="let header of headers" (click)="handleSort(header)">
+        {{ header }}
+      </th>
+    </tr>
+    <tr
+      *ngFor="let entry of getOrderedBody()"
+      (click)="onRowClick.emit(entry[0])"
+    >
+      <ng-container *ngFor="let cell of entry; let i = index">
+        <td *ngIf="i !== 0">
+          {{ cell }}
+        </td>
+      </ng-container>
+    </tr>
+  </table>
+</div>

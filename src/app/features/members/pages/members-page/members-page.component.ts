@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./members-page.component.css'],
 })
 export class MembersPageComponent implements OnInit {
-  selectedMember = null;
-  members = null;
+  selectedMember: Member = null;
+  members: Member[] = [];
 
   constructor(private memberService: MemberService, private router: Router) {}
 
@@ -26,7 +26,7 @@ export class MembersPageComponent implements OnInit {
     this.router.navigate(['members/add']);
   }
 
-  selectMember(member: Member) {
+  handleSelectMember(member: Member) {
     if (this.selectedMember === member) {
       return (this.selectedMember = null);
     }

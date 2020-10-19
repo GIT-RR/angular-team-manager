@@ -8,7 +8,9 @@ import {
 } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import * as membersBE from '../fixtures/members';
+import * as tasksBE from '../fixtures/tasks';
 import { Member } from '../models/member';
+import { Task } from '../models/task';
 
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
@@ -18,6 +20,7 @@ export class BackendInterceptor implements HttpInterceptor {
     let body = null;
 
     if (request.method === 'GET') {
+      // MEMBERS
       // get all members
       if (request.url === 'http://localhost:4200/members') {
         body = membersBE.getAll();
@@ -29,7 +32,13 @@ export class BackendInterceptor implements HttpInterceptor {
         const id = +splitted[splitted.length - 1];
         body = membersBE.get(id);
       }
+
+      // TASKS
+      if (request.url === 'http://localhost:4200/tasks') {
+        body = tasksBE.getAll();
+      }
     } else if (request.method === 'POST') {
+      // MEMBERS
       if (request.url.includes('http://localhost:4200/members/delete/')) {
         const splitted = request.url.split('/');
         const id = +splitted[splitted.length - 1];
@@ -43,6 +52,16 @@ export class BackendInterceptor implements HttpInterceptor {
       if (request.url === 'http://localhost:4200/members/update') {
         console.log(request.body);
         membersBE.update(request.body as Member);
+      }
+
+      // TASKS
+      if (request.url === 'http://localhost:4200/tasks/add') {
+        tasksBE.add(request.body as Task);
+      }
+
+      if (request.url === 'http://localhost:4200/tasks/update') {
+        console.log(request.body);
+        tasksBE.update(request.body as Task);
       }
     }
 

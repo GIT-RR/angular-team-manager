@@ -6,7 +6,6 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class MemberService {
-  private membersUrl = 'api/members'; // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
