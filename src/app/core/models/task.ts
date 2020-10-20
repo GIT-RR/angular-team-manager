@@ -3,6 +3,6 @@ export class Task {
   role: string;
   roleDesc?: string;
   description: string;
-  status: number;
+  status: string;
   statusDesc?: string;
 }

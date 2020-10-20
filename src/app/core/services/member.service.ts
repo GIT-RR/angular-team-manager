@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Member } from 'src/app/core/models/member';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MemberService {
+  private _reloadMembers = new Subject();
+  reloadMembers$ = this._reloadMembers.asObservable();
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   constructor(private httpClient: HttpClient) {} // private messageService: MessageService // private http: HttpClient,
 
-  getMembers(): Promise<Member[]> {
+  async getMembers(): Promise<Member[]> {
     return this.httpClient
       .get('http://localhost:4200/members')
       .toPromise()
@@ -22,7 +26,7 @@ export class MemberService {
       });
   }
 
-  getMember(id: number): Promise<Member> {
+  async getMember(id: number): Promise<Member> {
     return this.httpClient
       .get('http://localhost:4200/members/' + id)
       .toPromise()
@@ -32,7 +36,7 @@ export class MemberService {
       });
   }
 
-  addMember(member: Member): Promise<any> {
+  async addMember(member: Member): Promise<any> {
     return this.httpClient
       .post('http://localhost:4200/members/add', member)
       .toPromise()
@@ -42,7 +46,7 @@ export class MemberService {
       });
   }
 
-  updateMember(member: Member): Promise<any> {
+  async updateMember(member: Member): Promise<any> {
     return this.httpClient
       .post('http://localhost:4200/members/update', member)
       .toPromise()
@@ -52,11 +56,14 @@ export class MemberService {
       });
   }
 
-  removeMember(id: number): Promise<any> {
+  async removeMember(id: number): Promise<any> {
     return this.httpClient
       .post('http://localhost:4200/members/delete/' + id, null)
       .toPromise()
-      .then((res) => res)
+      .then((res) => {
+        console.log('next');
+        this._reloadMembers.next();
+      })
       .catch((e) => {
         throw e;
       });

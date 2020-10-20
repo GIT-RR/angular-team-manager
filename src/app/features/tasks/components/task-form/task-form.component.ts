@@ -27,16 +27,16 @@ export class TaskFormComponent implements OnChanges {
   taskForm = this.fb.group({
     id: [null],
     description: [null, Validators.required],
-    area: ['', Validators.required],
-    status: ['', Validators.required],
+    role: ['', Validators.required],
+    status: [null, Validators.required],
   });
 
   get description() {
     return this.taskForm.get('description');
   }
 
-  get area() {
-    return this.taskForm.get('area');
+  get role() {
+    return this.taskForm.get('role');
   }
 
   get status() {
@@ -49,7 +49,7 @@ export class TaskFormComponent implements OnChanges {
     if (this.task) {
       this.taskForm.controls['id'].setValue(this.task.id);
       this.taskForm.controls['description'].setValue(this.task.description);
-      this.taskForm.controls['area'].setValue(this.task.role);
+      this.taskForm.controls['role'].setValue(this.task.role);
       this.taskForm.controls['status'].setValue(this.task.status);
     }
   }

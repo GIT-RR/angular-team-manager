@@ -12,9 +12,9 @@ export const genders = [
 ];
 
 export const statuses = [
-  { value: 0, name: 'To do' },
-  { value: 1, name: 'In progress' },
-  { value: 2, name: 'Done' },
+  { value: '0', name: 'To do' },
+  { value: '1', name: 'In progress' },
+  { value: '2', name: 'Done' },
 ];
 
 export const getRoles = () => {

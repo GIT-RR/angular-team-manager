@@ -6,7 +6,7 @@
         <label>Area</label>
       </td>
       <td>
-        <select formControlName="area">
+        <select formControlName="role">
           <option value=""></option>
           <option *ngFor="let role of roles" value="{{ role.value }}">
             {{ role.name }}
@@ -14,8 +14,8 @@
         </select>
       </td>
       <td>
-        <app-error-message *ngIf="area.errors && (area.dirty || area.touched)">
-          <span *ngIf="area.errors.required">Required</span>
+        <app-error-message *ngIf="role.errors && (role.dirty || role.touched)">
+          <span *ngIf="role.errors.required">Required</span>
         </app-error-message>
       </td>
     </tr>

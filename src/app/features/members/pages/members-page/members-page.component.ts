@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Member } from 'src/app/core/models/member';
 import { MemberService } from 'src/app/core/services/member.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-members-page',
@@ -16,6 +17,11 @@ export class MembersPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMembers();
+
+    this.memberService.reloadMembers$.subscribe(() => {
+      this.getMembers();
+      this.selectedMember = null;
+    });
   }
 
   async getMembers() {
