@@ -34,11 +34,13 @@ export class TasksPageComponent implements OnInit {
   handleAddTask = (task: Task) => {
     this.taskService.addTask(task);
     this.addTask = false;
+    this.getTasks();
   };
 
   handleEditTask = (task: Task) => {
     this.taskService.updateTask(task);
     this.selectedTask = null;
+    this.getTasks();
   };
 
   handleSelectTask = (id: number) => {
