@@ -4,8 +4,10 @@ import { TasksPageComponent } from './features/tasks/pages/tasks-page/tasks-page
 import { MembersPageComponent } from './features/members/pages/members-page/members-page.component';
 import { MemberEditPageComponent } from './features/members/pages/member-edit-page/member-edit-page.component';
 import { MemberAddPageComponent } from './features/members/pages/member-add-page/member-add-page.component';
+import { LoginPageComponent } from './features/auth/pages/login-page/login-page.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginPageComponent },
   { path: 'tasks', component: TasksPageComponent },
   {
     path: 'members',
@@ -13,7 +15,7 @@ const routes: Routes = [
   },
   { path: 'members/add', component: MemberAddPageComponent },
   { path: 'members/edit/:id', component: MemberEditPageComponent },
-  { path: '**', redirectTo: 'members' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

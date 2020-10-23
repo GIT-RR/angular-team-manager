@@ -9,6 +9,7 @@ import {
 import { Observable, of } from 'rxjs';
 import * as membersBE from '../fixtures/members';
 import * as tasksBE from '../fixtures/tasks';
+import * as authBE from '../fixtures/auth';
 import { Member } from '../models/member';
 import { Task } from '../models/task';
 
@@ -38,6 +39,20 @@ export class BackendInterceptor implements HttpInterceptor {
         body = tasksBE.getAll();
       }
     } else if (request.method === 'POST') {
+      // LOGIN
+      if (request.url.includes('http://localhost:4200/login')) {
+        const requestData = authBE.login(
+          request.body['email'],
+          request.body['password']
+        );
+
+        if (requestData) {
+          body = requestData;
+        } else {
+          throw new Error('Invalid Credentials');
+        }
+      }
+
       // MEMBERS
       if (request.url.includes('http://localhost:4200/members/delete/')) {
         const splitted = request.url.split('/');

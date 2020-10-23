@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Member } from 'src/app/core/models/member';
 import { MemberService } from 'src/app/core/services/member.service';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-members-page',
@@ -10,29 +9,34 @@ import { Subject } from 'rxjs';
   styleUrls: ['./members-page.component.css'],
 })
 export class MembersPageComponent implements OnInit {
-  selectedMember: Member = null;
+  isLoading: boolean = false;
   members: Member[] = [];
+  selectedMember: Member = null;
 
   constructor(private memberService: MemberService, private router: Router) {}
 
   ngOnInit(): void {
     this.getMembers();
-
-    this.memberService.reloadMembers$.subscribe(() => {
-      this.getMembers();
-      this.selectedMember = null;
-    });
   }
 
   async getMembers() {
+    this.isLoading = true;
     this.members = await this.memberService.getMembers();
+    this.isLoading = false;
   }
 
-  addMember(): void {
+  handleAddMember(): void {
     this.router.navigate(['members/add']);
   }
 
-  handleSelectMember(member: Member) {
+  async handleDeleteMember(id: number) {
+    this.isLoading = true;
+    await this.memberService.removeMember(id);
+    this.selectedMember = null;
+    this.getMembers();
+  }
+
+  handleSelectMember(member: Member): Member {
     if (this.selectedMember === member) {
       return (this.selectedMember = null);
     }

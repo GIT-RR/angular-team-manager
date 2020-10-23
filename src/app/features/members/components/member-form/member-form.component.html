@@ -8,10 +8,7 @@
       <td>
         <input type="text" formControlName="email" />
       </td>
-      <div
-        className="error"
-        *ngIf="email.errors && (email.dirty || email.touched)"
-      >
+      <div class="error" *ngIf="email.errors && (email.dirty || email.touched)">
         <app-error-message
           *ngIf="email.errors && (email.dirty || email.touched)"
         >

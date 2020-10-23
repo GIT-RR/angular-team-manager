@@ -17,6 +17,10 @@ import { MemberAddPageComponent } from './features/members/pages/member-add-page
 import { BackendInterceptor } from './core/interceptors/backend.interceptor';
 import { TableComponent } from './shared/components/table/table.component';
 import { TaskFormComponent } from './features/tasks/components/task-form/task-form.component';
+import { LoadingComponent } from './shared/components/loading/loading.component';
+import { LoginPageComponent } from './features/auth/pages/login-page/login-page.component';
+import { AuthLayoutComponent } from './features/layout/auth-layout/auth-layout.component';
+import { NotAuthLayoutComponent } from './features/layout/not-auth-layout/not-auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { TaskFormComponent } from './features/tasks/components/task-form/task-fo
     ErrorMessageComponent,
     TableComponent,
     TaskFormComponent,
+    LoadingComponent,
+    LoginPageComponent,
+    AuthLayoutComponent,
+    NotAuthLayoutComponent,
   ],
   imports: [
     BrowserModule,

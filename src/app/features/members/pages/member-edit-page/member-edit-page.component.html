@@ -1,6 +1,8 @@
-<h2>Editing {{ member.name }}</h2>
-<app-member-form
-  [member]="member"
-  (onSuccess)="handleEdit($event)"
-  (onCancel)="handleCancel()"
-></app-member-form>
+<app-auth-layout>
+  <h2>Editing {{ member.name }}</h2>
+  <app-member-form
+    [member]="member"
+    (onSuccess)="handleEdit($event)"
+    (onCancel)="handleCancel()"
+  ></app-member-form>
+</app-auth-layout>

@@ -1,0 +1,23 @@
+<app-not-auth-layout>
+  <h3>Login</h3>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label>Email:</label>
+    <br />
+    <input type="text" formControlName="email" class="login-input" />
+    <app-error-message *ngIf="email.errors && (email.dirty || email.touched)">
+      <span *ngIf="email.errors.required">Required</span>
+      <span *ngIf="email.errors.email">Invalid format</span>
+    </app-error-message>
+    <br />
+    <label>Password:</label>
+    <br />
+    <input type="password" formControlName="password" class="login-input" />
+    <app-error-message
+      *ngIf="password.errors && (password.dirty || password.touched)"
+    >
+      <span *ngIf="password.errors.required">Required</span>
+    </app-error-message>
+    <br />
+    <button type="submit">Login</button>
+  </form>
+</app-not-auth-layout>

@@ -4,6 +4,8 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { MemberService } from '../../../../core/services/member.service';
 import { Router } from '@angular/router';
@@ -17,6 +19,7 @@ import { members } from 'src/app/core/fixtures/members';
 })
 export class MemberDisplayerComponent implements OnChanges {
   @Input() id: number;
+  @Output() onDelete = new EventEmitter();
   member: Member;
 
   constructor(private memberService: MemberService, private router: Router) {}
@@ -33,7 +36,7 @@ export class MemberDisplayerComponent implements OnChanges {
     this.router.navigate(['members/edit', this.id]);
   }
 
-  async handleDelete() {
-    await this.memberService.removeMember(this.id);
+  handleDelete() {
+    this.onDelete.emit(this.id);
   }
 }

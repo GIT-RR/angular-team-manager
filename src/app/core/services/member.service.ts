@@ -7,9 +7,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class MemberService {
-  private _reloadMembers = new Subject();
-  reloadMembers$ = this._reloadMembers.asObservable();
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -60,10 +57,7 @@ export class MemberService {
     return this.httpClient
       .post('http://localhost:4200/members/delete/' + id, null)
       .toPromise()
-      .then((res) => {
-        console.log('next');
-        this._reloadMembers.next();
-      })
+      .then((res) => res)
       .catch((e) => {
         throw e;
       });

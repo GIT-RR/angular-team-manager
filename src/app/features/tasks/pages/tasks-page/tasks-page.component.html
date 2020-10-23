@@ -1,20 +1,22 @@
-<h3>Team Tasks</h3>
-<button (click)="addTask = !addTask">Add a new task</button>
-<app-table
-  [headers]="headers"
-  [body]="getBody()"
-  (onRowClick)="handleSelectTask($event)"
-></app-table>
+<app-auth-layout>
+  <h3>Team Tasks</h3>
+  <button (click)="addTask = !addTask">Add a new task</button>
+  <app-table
+    [headers]="headers"
+    [body]="getBody()"
+    (onRowClick)="handleSelectTask($event)"
+  ></app-table>
 
-<app-task-form
-  *ngIf="selectedTask"
-  [task]="selectedTask"
-  (onSuccess)="handleEditTask($event)"
-  (onCancel)="selectedTask = null"
-></app-task-form>
+  <app-task-form
+    *ngIf="selectedTask"
+    [task]="selectedTask"
+    (onSuccess)="handleEditTask($event)"
+    (onCancel)="selectedTask = null"
+  ></app-task-form>
 
-<app-task-form
-  *ngIf="addTask"
-  (onSuccess)="handleAddTask($event)"
-  (onCancel)="addTask = false"
-></app-task-form>
+  <app-task-form
+    *ngIf="addTask"
+    (onSuccess)="handleAddTask($event)"
+    (onCancel)="addTask = false"
+  ></app-task-form>
+</app-auth-layout>
