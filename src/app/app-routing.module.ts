@@ -5,17 +5,27 @@ import { MembersPageComponent } from './features/members/pages/members-page/memb
 import { MemberEditPageComponent } from './features/members/pages/member-edit-page/member-edit-page.component';
 import { MemberAddPageComponent } from './features/members/pages/member-add-page/member-add-page.component';
 import { LoginPageComponent } from './features/auth/pages/login-page/login-page.component';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
-  { path: 'tasks', component: TasksPageComponent },
+  { path: 'tasks', component: TasksPageComponent, canActivate: [AuthGuard] },
   {
     path: 'members',
     component: MembersPageComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'members/add', component: MemberAddPageComponent },
-  { path: 'members/edit/:id', component: MemberEditPageComponent },
-  { path: '**', redirectTo: 'login' },
+  {
+    path: 'members/add',
+    component: MemberAddPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'members/edit/:id',
+    component: MemberEditPageComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '**', redirectTo: 'members' },
 ];
 
 @NgModule({

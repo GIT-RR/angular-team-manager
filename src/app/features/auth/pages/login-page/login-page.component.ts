@@ -40,8 +40,7 @@ export class LoginPageComponent {
         this.loginForm.value.email,
         this.loginForm.value.password
       );
-      // update central data
-      console.log(loginData);
+      localStorage.setItem('authData', JSON.stringify(loginData));
       this.router.navigate(['members']);
     } catch (ex) {
       alert(ex.message);

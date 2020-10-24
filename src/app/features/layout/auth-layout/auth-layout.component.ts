@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-layout',
@@ -6,5 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth-layout.component.css'],
 })
 export class AuthLayoutComponent {
-  handleLogout = () => {};
+  authData = JSON.parse(localStorage.getItem('authData'));
+
+  constructor(private router: Router) {}
+
+  handleLogout = () => {
+    setTimeout(() => {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }, 3000);
+  };
 }
