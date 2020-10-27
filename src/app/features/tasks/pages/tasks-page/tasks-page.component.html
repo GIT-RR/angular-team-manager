@@ -6,14 +6,12 @@
     [body]="getBody()"
     (onRowClick)="handleSelectTask($event)"
   ></app-table>
-
   <app-task-form
     *ngIf="selectedTask"
     [task]="selectedTask"
     (onSuccess)="handleEditTask($event)"
     (onCancel)="selectedTask = null"
   ></app-task-form>
-
   <app-task-form
     *ngIf="addTask"
     (onSuccess)="handleAddTask($event)"
